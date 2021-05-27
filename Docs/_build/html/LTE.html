@@ -175,12 +175,41 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="LTE.get_latency">
 <span class="sig-prename descclassname"><span class="pre">LTE.</span></span><span class="sig-name descname"><span class="pre">get_latency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_coor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LTE.get_latency" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_latency function returns the latency between
+the client and a given edge server depending on the provided 
+coordinates server_coor. Takes into account the latency introduced 
+by the backhaul wireless comunication and fiber optics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+<li><p><strong>server_coor</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the total amount of latency between the client and the edge server</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="LTE.latency_backhaul">
 <span class="sig-prename descclassname"><span class="pre">LTE.</span></span><span class="sig-name descname"><span class="pre">latency_backhaul</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LTE.latency_backhaul" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The latency_backhaul function calculates the total amount of time
+the backhaul introduces as latency between the client and the source edge server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns the total amount of time in milliseconds</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

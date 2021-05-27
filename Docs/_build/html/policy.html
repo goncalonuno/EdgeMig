@@ -175,7 +175,27 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="policy.policy_evaluator">
 <span class="sig-prename descclassname"><span class="pre">policy.</span></span><span class="sig-name descname"><span class="pre">policy_evaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#policy.policy_evaluator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The policy_evaluator function verifies if the client’s current location and instant
+is in an appropriate situation to start the migration process to other edge server that 
+it was suggest previously. In this function some heuristics and policies are employed 
+to check if the migration process should occur or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>server</strong> (<em>Object of class serverclass</em>) – The server object that the client is currently hosted on</p></li>
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the coordinates from the trips dataframe</p></li>
+<li><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns either true if the migration should occur or returns false if the migration should not happen</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

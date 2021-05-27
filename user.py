@@ -5,6 +5,53 @@ import os
 
 class UserDef:
 
+    """The class UserDef is used to secure all the information entered by the 
+    user when passing the arguments to run the program. This information will
+    impact the way the simulation will run and directly affect the results.
+
+    :param user_def_dict: Dictionary with all the user defined paramenters that were entered
+    :type user_def_dict: Dictionary
+    :param dftrips_path: Path for the trips dataset
+    :type dftrips_path: String
+    :param dfstations_path: Path for the dataset with the edge server stations
+    :type dfstations_path: String
+    :param df_LTE_path: Path for the dataset with the LTE stations
+    :type df_LTE_path: String
+    :param dfvm_path: Path for the dataset with the VMs
+    :type dfvm_path: String   
+    :param cone: Cone aperture
+    :type cone: Integer
+    :param digest_path: Path for outputting the results 
+    :type digest_path: String
+    :param trip_min: The starting trip ID number
+    :type trip_min: Integer
+    :param trip_max: The ending trip ID number 
+    :type trip_max: Integer
+    :param vm_mode: Defines if the simulation will run with all the user designated VMs or if it runs with a single VM depending on ID entered by the user 
+    :type vm_mode: Integer
+    :param vm_id: The ID of the VM if the simulation is ran in vm_mode=0 
+    :type vm_id: Integer
+    :param migtype: The type o migration that it was performed 
+    :type migtype: String
+    :param benchmark: The type of benchmark that was used while performing the migration 
+    :type benchmark: String
+    :param PTR: Page transfering rate while the migration happend 
+    :type PTR: Integer
+    :param rem_cluster: Defines if the simulation will remove edge servers that too close together
+    :type rem_cluster: Integer
+    :param dynamic_plot: Defines if the simulation will display the dynamic plot
+    :type dynamic_plot: Integer
+    :param mig_cost: Defines if the simulation will account the cost of migration
+    :type mig_cost: Integer
+    :param timeout: Defines if the simulation will add a timeout after each migration is performed as a cooldown
+    :type timeout: Integer
+    :param timeout_multiplier: Defines the timout multipler to be used if the user decides to use a timeout upon each migration 
+    :type timeout_multiplier: Integer
+    :param lat_dist: Defines if the simulation will use as a migration policy the distance or latency between the source and target 
+    :type lat_dist: Integer
+    
+    """
+
     def __init__(self, user_def_dict):
         
         self.dftrips_path = user_def_dict['dftrips']
@@ -32,6 +79,18 @@ class UserDef:
 
 def handle_user_def (usr_def):
 
+    """The function handle_user_def is responsible to parse and check if the
+    arguments entered by the user are valid. It returns a dictionary with all
+    the arguments organized in order to then fill the object user_def with all
+    the required definitions.
+
+    :param usr_def: List with all the arguments the user entered in the argv
+    :type usr_def: List
+
+    :return: user_def_dict, a dictionary with all the arguments the user entered
+    :rtype: Dictionary
+    """
+
     user_def_dict = {'dftrips': 'DACT_E-Dataset.csv',                                                                                         
                     'dfstations': 'Network_Edge.csv',                                                                                         
                     'df_LTE': 'Network_LTE.csv',                                                                                              
@@ -52,8 +111,6 @@ def handle_user_def (usr_def):
                     'timeout_multiplier': 7,                              # >= 0                                                              
                     'lat_dist': 1                                         # 1-> Migration based on lat , 2 -> Migration based on dist         
                     }
-
-
 
     try:
         opts, args = getopt.getopt(usr_def,'dh',['VMmode=','trips=','stations=','lte=','vm=','dgst_folder=', 

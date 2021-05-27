@@ -5,6 +5,13 @@ from haversine import Unit
 
 def latency_backhaul():
 
+    """ The latency_backhaul function calculates the total amount of time
+        the backhaul introduces as latency between the client and the source edge server.
+
+        :return: Returns the total amount of time in milliseconds
+        :rtype: Integer
+    """
+
     Gpon = 4.5
     Ue = 2
     Radio_interface = 5.5
@@ -22,7 +29,23 @@ def latency_backhaul():
     return lat
 
 
-def get_latency(client, coor_index, server_coor): 
+def get_latency(client, coor_index, server_coor):
+
+    """ The get_latency function returns the latency between
+        the client and a given edge server depending on the provided 
+        coordinates server_coor. Takes into account the latency introduced 
+        by the backhaul wireless comunication and fiber optics
+
+        :param client: The client object that has all the information about the client of that trip
+        :type client: Object of class clientclass
+        :param coor_index: Index of the trips dataframe
+        :type coor_index: Integer
+        :param server_coor: Index of the trips dataframe
+        :type server_coor: Integer
+
+        :return: Returns the total amount of latency between the client and the edge server  
+        :rtype: Integer
+    """ 
 
     client_coor = client.get_coordinates(coor_index)
     lte_st_coor = [client.lte_st['lat'].values[0], client.lte_st['lon'].values[0]]

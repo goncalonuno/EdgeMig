@@ -27,25 +27,26 @@ def latency_equilibrium(df, title):
     #ax.scatter(df['INDEX'], df['lat_target_end'], label = 'Latency to the target as migration completed')
     #ax.plot(df['INDEX'], df['lat_target_end'])
     #ax.axhline(0,color= 'black')
-    """
-    i=0
-    for id_lte, idtrip in zip(df['id_lte_origin'],df['TripID']):
-        ax.annotate("S_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_source_init'].values[i]))
-        ax.annotate("S_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_source_end'].values[i]))
-        i = i + 1
+    
+    
+    #i=0
+    #for id_lte, idtrip in zip(df['id_edge_origin'],df['TripID']):
+    #    ax.annotate("S_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_source_init'].values[i]))
+    #    ax.annotate("S_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_source_end'].values[i]))
+    #    i = i + 1
 
-    i=0
-    for id_lte, idtrip in zip(df['id_lte_target'],df['TripID']):
-        ax.annotate("T_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_target_init'].values[i]))
-        ax.annotate("T_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_target_end'].values[i]))
-        i = i + 1
+    #i=0
+    #for id_lte, idtrip in zip(df['id_edge_target'],df['TripID']):
+    #    ax.annotate("T_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_target_init'].values[i]))
+    #    ax.annotate("T_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['lat_target_end'].values[i]))
+    #    i = i + 1
 
-    i=0
-    for id_lte_o, id_lte_d in zip(df['id_lte_origin'],df['id_lte_target']):
-        ax.annotate(""+str(id_lte_o) + "->" + str(id_lte_d), (df['INDEX'].values[i], df['delta_lat_init'].values[i]))
-        ax.annotate(""+str(id_lte_o) + "->" + str(id_lte_d), (df['INDEX'].values[i], df['delta_lat_real_end'].values[i]))
-        i = i + 1
-    """
+    #i=0
+    #for id_lte_o, id_lte_d in zip(df['id_edge_origin'],df['id_edge_target']):
+    #    ax.annotate(""+str(id_lte_o) + "->" + str(id_lte_d), (df['INDEX'].values[i], df['delta_lat_init'].values[i]))
+    #    ax.annotate(""+str(id_lte_o) + "->" + str(id_lte_d), (df['INDEX'].values[i], df['delta_lat_real_end'].values[i]))
+    #    i = i + 1
+    
     ax.set_xlabel('Migrations Performed')
     ax.set_ylabel('Delta Latency in ms')
     ax.legend()
@@ -75,19 +76,19 @@ def distance_equilibrium(df, title):
     ax.axhline(0,color= 'black')
 
     i=0
-    for id_lte, idtrip in zip(df['id_lte_origin'],df['TripID']):
+    for id_lte, idtrip in zip(df['id_edge_origin'],df['TripID']):
         ax.annotate("S_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['dist_source_init'].values[i]))
         ax.annotate("S_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['dist_source_end'].values[i]))
         i = i + 1
 
     i=0
-    for id_lte, idtrip in zip(df['id_lte_target'],df['TripID']):
+    for id_lte, idtrip in zip(df['id_edge_target'],df['TripID']):
         ax.annotate("T_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['dist_target_init'].values[i]))
         ax.annotate("T_ID_LTE: "+str(id_lte) + "\nTripID: " + str(idtrip), (df['INDEX'].values[i], df['dist_target_end'].values[i]))
         i = i + 1
 
     i=0
-    for id_lte_o, id_lte_d in zip(df['id_lte_origin'],df['id_lte_target']):
+    for id_lte_o, id_lte_d in zip(df['id_edge_origin'],df['id_edge_target']):
         ax.annotate(""+str(id_lte_o) + "->" + str(id_lte_d), (df['INDEX'].values[i], df['delta_dist_init'].values[i]))
         ax.annotate(""+str(id_lte_o) + "->" + str(id_lte_d), (df['INDEX'].values[i], df['delta_dist_real_end'].values[i]))
         i = i + 1

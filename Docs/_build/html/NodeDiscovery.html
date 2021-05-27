@@ -175,37 +175,156 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.cone_determination">
 <span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">cone_determination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.cone_determination" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The cone_determination function determines the cone that the client
+will have when running the trip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.get_client_source">
 <span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">get_client_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.get_client_source" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_client_source function finds the closest edge server to the 
+user by comparing the distance between the client coordinates and the 
+coordinates of the edge server station. This is used to find the first edge server
+as it starts the trip</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.lte_connection">
 <span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">lte_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.lte_connection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The lte_connection function find the closest LTE station 
+to the client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.node_search">
 <span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">node_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.node_search" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The node_search function suggest a possible destination 
+based on the client’s heading through the use of a search cone 
+and by taking into account the latency or distance that possible destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+<li><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p></li>
+<li><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 it finds a possible destination or it returns -1 if it can’t find a possible destination</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.node_search_dist">
 <span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">node_search_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_coor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">st_lat_lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_origin_coor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.node_search_dist" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The node_search_dist function checks if the distance to 
+the target edge server is within range when comparing it to the distance
+that the client has to the source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client_coor</strong> (<em>Tuple of floats</em>) – The client coordinates</p></li>
+<li><p><strong>st_lat_lon</strong> (<em>Tuple of floats</em>) – The target station coordinates</p></li>
+<li><p><strong>server_origin_coor</strong> (<em>Tuple of floats</em>) – The source station coordinates</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 if the destination is in range or it returns -1 if if the destination is not in range</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.node_search_lat">
 <span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">node_search_lat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">st_lat_lon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.node_search_lat" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The node_search_lat function checks if the latency to 
+the target edge server is within range when comparing it to the lantecy
+that the client has to the source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+<li><p><strong>st_lat_lon</strong> (<em>Tuple of floats</em>) – The target station coordinates</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 if the destination is in range or it returns -1 if if the destination is not in range</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="NodeDiscovery.remove_cluster">
-<span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">remove_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_aux</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.remove_cluster" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">NodeDiscovery.</span></span><span class="sig-name descname"><span class="pre">remove_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NodeDiscovery.remove_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>The remove_cluster function removes clusters of edge servers.
+This is to prevent migrations between edge servers that are to close together
+and mitigate uncessary migrations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the filtered edge server dataframe</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

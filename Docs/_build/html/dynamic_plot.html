@@ -175,27 +175,108 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamic_plot.Animate">
 <span class="sig-prename descclassname"><span class="pre">dynamic_plot.</span></span><span class="sig-name descname"><span class="pre">Animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dftrips</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamic_plot.Animate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The Animate function is responsible for plotting the data 
+that is being saved in real time when running the simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>Integer</em>) – Frame number</p></li>
+<li><p><strong>dftrips</strong> (<em>Pandas dataframe</em>) – Dataframe with the trips</p></li>
+<li><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p></li>
+<li><p><strong>lock</strong> (<em>Multiprocessing lock</em>) – Multiprocessing lock for accessing memory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in case of success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamic_plot.df_dynamic_plot">
 <span class="sig-prename descclassname"><span class="pre">dynamic_plot.</span></span><span class="sig-name descname"><span class="pre">df_dynamic_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfnode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamic_plot.df_dynamic_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The df_dynamic_plot function is responsible adding the newly generated
+data to the dataframe that will be used by the dynamic plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>dfnode</strong> (<em>Pandas dataframe</em>) – Dataframe used for saving the data required by the dynamic plot</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the coordinates from the trips dataframe</p></li>
+<li><p><strong>ret_node</strong> (<em>Integer</em>) – Defines if the given coordinate has no possible migration destination</p></li>
+<li><p><strong>lock</strong> (<em>Multiprocessing lock</em>) – Multiprocessing lock for accessing memory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns a dataframe with the new data added at the end</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamic_plot.heading_to_coordinate">
 <span class="sig-prename descclassname"><span class="pre">dynamic_plot.</span></span><span class="sig-name descname"><span class="pre">heading_to_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">o_lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamic_plot.heading_to_coordinate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The heading_to_coordinate function is responsible for converting
+a heading value into a coordinate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>o_lat</strong> (<em>Float</em>) – Latitude</p></li>
+<li><p><strong>o_lon</strong> (<em>Float</em>) – Longitude</p></li>
+<li><p><strong>angle</strong> (<em>Float</em>) – Heading angle</p></li>
+<li><p><strong>dist</strong> (<em>Float</em>) – Distance from the provided coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns a list with the converted latitude and longitude</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamic_plot.init">
 <span class="sig-prename descclassname"><span class="pre">dynamic_plot.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dynamic_plot.init" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The init function initiates the data that will be plotted dynamically</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns the line where the data will be plotted</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List of Line2D</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamic_plot.plot_process">
 <span class="sig-prename descclassname"><span class="pre">dynamic_plot.</span></span><span class="sig-name descname"><span class="pre">plot_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dftrips</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamic_plot.plot_process" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The plot_process function is responsible for starting the plotting
+procedure that it will then be animated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dftrips</strong> (<em>Pandas dataframe</em>) – Dataframe with the trips</p></li>
+<li><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p></li>
+<li><p><strong>lock</strong> (<em>Multiprocessing lock</em>) – Multiprocessing lock for accessing memory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in case of success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

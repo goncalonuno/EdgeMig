@@ -175,21 +175,50 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="Main.check_dataframes">
 <span class="sig-prename descclassname"><span class="pre">Main.</span></span><span class="sig-name descname"><span class="pre">check_dataframes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dftrips</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_LTE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfvm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Main.check_dataframes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The check_dataframes function verifies if all datasets provided exist
+and have a correct structure based on the provided header of each .csv file.
+This function is used to prevent program errors futher in the execution process
+by checking if all the information that the user used to run the simulation can actually 
+be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dftrips</strong> (<em>Pandas dataframe</em>) – Dataframe with the trips</p></li>
+<li><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p></li>
+<li><p><strong>df_LTE</strong> (<em>Pandas dataframe</em>) – Dataframe with the LTE stations</p></li>
+<li><p><strong>dfvm</strong> (<em>Pandas dataframe</em>) – Dataframe with the VMs</p></li>
+<li><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Main.choose_vm">
 <span class="sig-prename descclassname"><span class="pre">Main.</span></span><span class="sig-name descname"><span class="pre">choose_vm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfvm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Main.choose_vm" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the choose vm function!</p>
+<dd><p>The choose_vm function filters the dataset which has multiple vm migrations 
+by the user defined proprieties. Depending on the mode the simulation
+is running the resulting dataframe may be a set of VMs that follow the 
+specifications or a single VM from a given ID that the user introduced.
+The first situation being vm_mode = 1 and the second situation being vm_mode = 0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dfvm</strong> – dataframe with the VMs</p></li>
-<li><p><strong>user_def</strong> – User definitions</p></li>
+<li><p><strong>dfvm</strong> (<em>Pandas dataframe</em>) – Dataframe with the VMs</p></li>
+<li><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Returns a filtered dataframe of the VM’s</p>
+<dd class="field-even"><p>Returns a filtered dataframe with the VMs that will be used</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas dataframe</p>
 </dd>
 </dl>
 </dd></dl>
@@ -197,12 +226,68 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="Main.data_to_digest">
 <span class="sig-prename descclassname"><span class="pre">Main.</span></span><span class="sig-name descname"><span class="pre">data_to_digest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Main.data_to_digest" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The data_to_digest function copies the results of the simulation
+to the correct digest folders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Main.setup_folders">
 <span class="sig-prename descclassname"><span class="pre">Main.</span></span><span class="sig-name descname"><span class="pre">setup_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Main.setup_folders" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The setup_folders function generates the correct folders for
+outputting the results of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Main.simulation">
+<span class="sig-prename descclassname"><span class="pre">Main.</span></span><span class="sig-name descname"><span class="pre">simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfstations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfnode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clientlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stationlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Main.simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The simulation function is responsible for checking the main sequence of events
+that evaluates each step of the client by iterating through the multiple trips and 
+virutal machines for each coordinate of the client. On each coordinate analyzed an evaluation 
+is done to see if the migration is viable. If the suggested destination is approved by the 
+policy evaluator then the migration process occurs. Otherwise, the next coordinate will be 
+analyzed the same way, until the right opportunity appears. In the process of running the simulation 
+some data is saved and acquired, so that in the future some results about the migration mechanism can be studied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p></li>
+<li><p><strong>dfstations</strong> (<em>Pandas dataframe</em>) – Dataframe with the edge server stations</p></li>
+<li><p><strong>dfnode</strong> (<em>Pandas dataframe</em>) – Dataframe used for saving the data required by the dynamic plot</p></li>
+<li><p><strong>dfvm</strong> (<em>Pandas dataframe</em>) – Dataframe used for saving the latency and distance data to the user throughout the path</p></li>
+<li><p><strong>clientlist</strong> (<em>List</em>) – List with all the clients</p></li>
+<li><p><strong>clientlist</strong> – List with all the edge server stations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

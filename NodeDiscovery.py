@@ -6,6 +6,20 @@ from LTE import *
 
 def get_client_source(client, dfstations):
 
+    """The get_client_source function finds the closest edge server to the 
+    user by comparing the distance between the client coordinates and the 
+    coordinates of the edge server station. This is used to find the first edge server
+    as it starts the trip
+
+    :param client: The client object that has all the information about the client of that trip
+    :type client: Object of class clientclass
+    :param dfstations: Dataframe with the edge server stations
+    :type dfstations: Pandas dataframe
+    
+    :return: Returns 1 in success
+    :rtype: Integer
+    """
+
     client_coor = client.get_coordinates(0)
     listaux = list()
     
@@ -45,6 +59,23 @@ def get_client_source(client, dfstations):
 
 
 def node_search(client, coor_index, dfstations, user_def):
+
+    """The node_search function suggest a possible destination 
+    based on the client's heading through the use of a search cone 
+    and by taking into account the latency or distance that possible destination. 
+
+    :param client: The client object that has all the information about the client of that trip
+    :type client: Object of class clientclass
+    :param coor_index: Index of the trips dataframe
+    :type coor_index: Integer
+    :param dfstations: Dataframe with the edge server stations
+    :type dfstations: Pandas dataframe
+    :param user_def: User definitions
+    :type user_def: Object of the class UserDef
+    
+    :return: Returns 1 it finds a possible destination or it returns -1 if it can't find a possible destination
+    :rtype: Integer
+    """
 
     client_coor = client.get_coordinates(coor_index)
     server_origin_coor = client.get_server_origin_coor()
@@ -176,6 +207,18 @@ def node_search(client, coor_index, dfstations, user_def):
 
 def cone_determination(client, coor_index):
 
+    """The cone_determination function determines the cone that the client
+    will have when running the trip. 
+
+    :param client: The client object that has all the information about the client of that trip
+    :type client: Object of class clientclass
+    :param coor_index: Index of the trips dataframe
+    :type coor_index: Integer
+    
+    :return: Returns 1 in success
+    :rtype: Integer
+    """
+
     client_heading = client.dftrip['Heading'].values[coor_index]
     cone = client.cone
 
@@ -204,31 +247,54 @@ def cone_determination(client, coor_index):
     return 1
 
 
-def remove_cluster(df_aux):
+def remove_cluster(dfstations):
+
+    """The remove_cluster function removes clusters of edge servers.
+    This is to prevent migrations between edge servers that are to close together
+    and mitigate uncessary migrations. 
+
+    :param dfstations: Dataframe with the edge server stations
+    :type dfstations: Pandas dataframe
+    
+    :return: Returns the filtered edge server dataframe 
+    :rtype: Pandas Dataframe
+    """
 
     delete_list = list()
 
-    for i in range(df_aux['ID_LTE'].count()):
+    for i in range(dfstations['ID_LTE'].count()):
 
-        Lat_o = df_aux['lat'].values[i]
-        Lon_o = df_aux['lon'].values[i]
+        Lat_o = dfstations['lat'].values[i]
+        Lon_o = dfstations['lon'].values[i]
 
-        for i in range(df_aux['ID_LTE'].count()):
+        for i in range(dfstations['ID_LTE'].count()):
 
-            Lat = df_aux['lat'].values[i]
-            Lon = df_aux['lon'].values[i]
+            Lat = dfstations['lat'].values[i]
+            Lon = dfstations['lon'].values[i]
                                                                                                 #raio = 500m
             if( (Lat_o != Lat and Lon_o != Lon) and ( pow(Lon-Lon_o,2) + pow(Lat-Lat_o,2) < pow(0.00753,2) ) ):
 
                 delete_list.append(i)
 
-    df_aux = df_aux.drop(delete_list)
-    df_aux = df_aux.reset_index(drop=True)
+    dfstations = dfstations.drop(delete_list)
+    dfstations = dfstations.reset_index(drop=True)
 
-    return df_aux
+    return dfstations
 
 
 def lte_connection(client, coor_index):
+
+    """The lte_connection function find the closest LTE station 
+    to the client.
+
+    :param client: The client object that has all the information about the client of that trip
+    :type client: Object of class clientclass
+    :param coor_index: Index of the trips dataframe
+    :type coor_index: Integer
+    
+    :return: Returns 1 in success
+    :rtype: Integer
+    """
 
     client_coor = client.get_coordinates(coor_index)
     listaux = list()
@@ -253,6 +319,21 @@ def lte_connection(client, coor_index):
 
 def node_search_dist(client_coor, st_lat_lon, server_origin_coor):
 
+    """The node_search_dist function checks if the distance to 
+    the target edge server is within range when comparing it to the distance
+    that the client has to the source.
+
+    :param client_coor: The client coordinates
+    :type client_coor: Tuple of floats
+    :param st_lat_lon: The target station coordinates
+    :type st_lat_lon: Tuple of floats
+    :param server_origin_coor: The source station coordinates
+    :type server_origin_coor: Tuple of floats
+
+    :return: Returns 1 if the destination is in range or it returns -1 if if the destination is not in range
+    :rtype: Integer
+    """
+
     distance_target = hs.haversine(client_coor,st_lat_lon)
 
     dist_origin = hs.haversine(client_coor,server_origin_coor)
@@ -264,6 +345,21 @@ def node_search_dist(client_coor, st_lat_lon, server_origin_coor):
 
 
 def node_search_lat(client, coor_index, st_lat_lon):
+
+    """The node_search_lat function checks if the latency to 
+    the target edge server is within range when comparing it to the lantecy
+    that the client has to the source.
+
+    :param client: The client object that has all the information about the client of that trip
+    :type client: Object of class clientclass
+    :param coor_index: Index of the trips dataframe
+    :type coor_index: Integer
+    :param st_lat_lon: The target station coordinates
+    :type st_lat_lon: Tuple of floats
+
+    :return: Returns 1 if the destination is in range or it returns -1 if if the destination is not in range
+    :rtype: Integer
+    """
 
     latency_target = get_latency(client, coor_index, st_lat_lon)
 

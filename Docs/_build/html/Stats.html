@@ -175,32 +175,153 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="Stats.creatstats">
 <span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">creatstats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.creatstats" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The creatstats function creates and fills a new object of the class
+statsclass and appends it to the list of stats that is associated to each client.
+Each obejct and element of that list of stats corresponds to one migration performed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>server</strong> (<em>Object of class serverclass</em>) – The server object that the client is currently hosted on</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in case of success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Stats.path_stats">
-<span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">path_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfpath_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.path_stats" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">path_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.path_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path_stats function creates a dataframe with data from 
+the migrations performed related to the latency and distance between the 
+client and the edge server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfpath</strong> (<em>List</em>) – List of the clients</p></li>
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>coor_index</strong> (<em>Integer</em>) – Index of the trips dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the dataframe with the statistics</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Stats.stats_collect">
 <span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">stats_collect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Mt_real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mt_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.stats_collect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The stats_collect function is responsible for collecting the data 
+on every migration that occurs. This data will be usefull determine the
+effectiveness of the migration mechanisms used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Mt_real</strong> (<em>Float</em>) – Total time of migration</p></li>
+<li><p><strong>Mt_est</strong> (<em>Float</em>) – Time estimate for completing the migration</p></li>
+<li><p><strong>server</strong> (<em>Object of class serverclass</em>) – The server object that the client is currently hosted on</p></li>
+<li><p><strong>client</strong> (<em>Object of class clientclass</em>) – The client object that has all the information about the client of that trip</p></li>
+<li><p><strong>user_def</strong> (<em>Object of the class UserDef</em>) – User definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns 1 in case of success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Stats.stats_df">
 <span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">stats_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clientlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.stats_df" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The stats_df function creates a dataframe with all the data saved throughout
+the running of the simulation. All the data from the migrations performed by each client
+on each trip is added to the dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clientlist</strong> (<em>List</em>) – List of the clients</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the dataframe with the statistics</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Stats.stats_df_node_dt">
 <span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">stats_df_node_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clientlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.stats_df_node_dt" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The stats_df_node_dt function creates a dataframe with data from 
+the migrations performed realted to the client heading and the station heading 
+relative to the client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clientlist</strong> (<em>List</em>) – List of the clients</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the dataframe with the statistics</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Pandas Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="Stats.statsclass">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">statsclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Mt_real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mt_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DT_real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mig_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trip_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vm_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_source_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_target_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_lte_origin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_lte_target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_source_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_target_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_heading</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station_heading</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cone</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transferred_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">triptime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tripdistance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.statsclass" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">Stats.</span></span><span class="sig-name descname"><span class="pre">statsclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Mt_real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mt_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DT_real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mig_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trip_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vm_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_source_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_target_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_edge_origin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_edge_target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_source_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_target_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_heading</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station_heading</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cone</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transferred_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">triptime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tripdistance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Stats.statsclass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class statsclass is used to save all the information 
+from the multiple migrations that occured in each trip and client.
+All this data will then be exported and plotted in the plotting program</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Mt_real</strong> (<em>Float</em>) – Real migration time</p></li>
+<li><p><strong>Mt_est</strong> (<em>Float</em>) – Estimate of the migration time</p></li>
+<li><p><strong>DT_real</strong> (<em>Float</em>) – Real downtime</p></li>
+<li><p><strong>mig_id</strong> (<em>Integer</em>) – Migration ID</p></li>
+<li><p><strong>trip_id</strong> (<em>String</em>) – Trip ID</p></li>
+<li><p><strong>vm_id</strong> (<em>Integer</em>) – Virtual machine ID</p></li>
+<li><p><strong>lat_source_init</strong> (<em>Float</em>) – Latency from the client to the source as the migration started</p></li>
+<li><p><strong>lat_target_init</strong> (<em>Float</em>) – Latency from the client to the target as the migration started</p></li>
+<li><p><strong>id_edge_origin</strong> (<em>String</em>) – The ID of the source edge server</p></li>
+<li><p><strong>id_edge_target</strong> (<em>String</em>) – The ID of the target edge server</p></li>
+<li><p><strong>dist_source_init</strong> (<em>Float</em>) – Distance from the client to the source as the migration started</p></li>
+<li><p><strong>dist_target_init</strong> (<em>Float</em>) – Distance from the client to the source as the migration started</p></li>
+<li><p><strong>client_heading</strong> (<em>Float</em>) – Heading of the client</p></li>
+<li><p><strong>station_heading</strong> (<em>Float</em>) – Heading of the station relative to the client</p></li>
+<li><p><strong>cone</strong> (<em>Float</em>) – Cone aperture</p></li>
+<li><p><strong>transferred_data</strong> (<em>Float</em>) – Transfered data in GB</p></li>
+<li><p><strong>triptime</strong> (<em>Float</em>) – Total time the trip takes</p></li>
+<li><p><strong>tripdistance</strong> (<em>Float</em>) – Total distance of a given trip</p></li>
+<li><p><strong>delta_lat_init</strong> (<em>Float</em>) – The latency delta between the source and the target once the migration started</p></li>
+<li><p><strong>delta_lat_real_end</strong> (<em>Float</em>) – The latency delta between the source and the target once the migration finished (No estimation done)</p></li>
+<li><p><strong>delta_lat_est_end</strong> (<em>Float</em>) – The latency delta between the source and the target once the migration finished (With estimation)</p></li>
+<li><p><strong>lat_source_end</strong> (<em>Float</em>) – Latency from the client to the source as the migration finished</p></li>
+<li><p><strong>lat_target_end</strong> (<em>Float</em>) – Latency from the client to the target as the migration finished</p></li>
+<li><p><strong>delta_dist_init</strong> (<em>Float</em>) – The distance delta between the source and the target once the migration started</p></li>
+<li><p><strong>delta_dist_real_end</strong> (<em>Float</em>) – The distance delta between the source and the target once the migration finished (No estimation done)</p></li>
+<li><p><strong>delta_dist_est_end</strong> (<em>Float</em>) – The distance delta between the source and the target once the migration finished (With estimation)</p></li>
+<li><p><strong>dist_source_end</strong> (<em>Float</em>) – Distance from the client to the source as the migration finished</p></li>
+<li><p><strong>dist_target_end</strong> (<em>Float</em>) – Distance from the client to the target as the migration finished</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

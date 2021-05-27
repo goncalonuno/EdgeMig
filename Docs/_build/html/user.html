@@ -175,12 +175,56 @@
 <dt class="sig sig-object py" id="user.UserDef">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user.</span></span><span class="sig-name descname"><span class="pre">UserDef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_def_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user.UserDef" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class UserDef is used to secure all the information entered by the 
+user when passing the arguments to run the program. This information will
+impact the way the simulation will run and directly affect the results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_def_dict</strong> (<em>Dictionary</em>) – Dictionary with all the user defined paramenters that were entered</p></li>
+<li><p><strong>dftrips_path</strong> (<em>String</em>) – Path for the trips dataset</p></li>
+<li><p><strong>dfstations_path</strong> (<em>String</em>) – Path for the dataset with the edge server stations</p></li>
+<li><p><strong>df_LTE_path</strong> (<em>String</em>) – Path for the dataset with the LTE stations</p></li>
+<li><p><strong>dfvm_path</strong> (<em>String</em>) – Path for the dataset with the VMs</p></li>
+<li><p><strong>cone</strong> (<em>Integer</em>) – Cone aperture</p></li>
+<li><p><strong>digest_path</strong> (<em>String</em>) – Path for outputting the results</p></li>
+<li><p><strong>trip_min</strong> (<em>Integer</em>) – The starting trip ID number</p></li>
+<li><p><strong>trip_max</strong> (<em>Integer</em>) – The ending trip ID number</p></li>
+<li><p><strong>vm_mode</strong> (<em>Integer</em>) – Defines if the simulation will run with all the user designated VMs or if it runs with a single VM depending on ID entered by the user</p></li>
+<li><p><strong>vm_id</strong> (<em>Integer</em>) – The ID of the VM if the simulation is ran in vm_mode=0</p></li>
+<li><p><strong>migtype</strong> (<em>String</em>) – The type o migration that it was performed</p></li>
+<li><p><strong>benchmark</strong> (<em>String</em>) – The type of benchmark that was used while performing the migration</p></li>
+<li><p><strong>PTR</strong> (<em>Integer</em>) – Page transfering rate while the migration happend</p></li>
+<li><p><strong>rem_cluster</strong> (<em>Integer</em>) – Defines if the simulation will remove edge servers that too close together</p></li>
+<li><p><strong>dynamic_plot</strong> (<em>Integer</em>) – Defines if the simulation will display the dynamic plot</p></li>
+<li><p><strong>mig_cost</strong> (<em>Integer</em>) – Defines if the simulation will account the cost of migration</p></li>
+<li><p><strong>timeout</strong> (<em>Integer</em>) – Defines if the simulation will add a timeout after each migration is performed as a cooldown</p></li>
+<li><p><strong>timeout_multiplier</strong> (<em>Integer</em>) – Defines the timout multipler to be used if the user decides to use a timeout upon each migration</p></li>
+<li><p><strong>lat_dist</strong> (<em>Integer</em>) – Defines if the simulation will use as a migration policy the distance or latency between the source and target</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="user.handle_user_def">
 <span class="sig-prename descclassname"><span class="pre">user.</span></span><span class="sig-name descname"><span class="pre">handle_user_def</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">usr_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user.handle_user_def" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function handle_user_def is responsible to parse and check if the
+arguments entered by the user are valid. It returns a dictionary with all
+the arguments organized in order to then fill the object user_def with all
+the required definitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>usr_def</strong> (<em>List</em>) – List with all the arguments the user entered in the argv</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>user_def_dict, a dictionary with all the arguments the user entered</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 

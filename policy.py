@@ -5,6 +5,24 @@ from haversine import Unit
 
 def policy_evaluator(server, client, coor_index, user_def):
 
+    """ The policy_evaluator function verifies if the client's current location and instant
+        is in an appropriate situation to start the migration process to other edge server that 
+        it was suggest previously. In this function some heuristics and policies are employed 
+        to check if the migration process should occur or not.
+
+        :param server: The server object that the client is currently hosted on 
+        :type server: Object of class serverclass
+        :param client: The client object that has all the information about the client of that trip
+        :type client: Object of class clientclass
+        :param coor_index: Index of the coordinates from the trips dataframe
+        :type coor_index: Integer
+        :param user_def: User definitions
+        :type user_def: Object of the class UserDef
+
+        :return: Returns either true if the migration should occur or returns false if the migration should not happen
+        :rtype: Boolean
+    """
+
     latencies = client.latencies
     distancies = client.distancies
 
