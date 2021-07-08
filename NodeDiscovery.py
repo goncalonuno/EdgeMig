@@ -176,7 +176,7 @@ def node_search(client, coor_index, dfstations, user_def):
         df_aux = df_aux[df_aux.Distance == df_aux.Distance.min()]
     df_aux = df_aux.reset_index(drop=True)
 
-
+    ### AQUI PARA BAIXO
     if( df_aux['ID_LTE'].values[0] == client.dfmigrations['ID_LTE'].values[0] ):
         return -1
 
@@ -317,6 +317,51 @@ def lte_connection(client, coor_index):
     return 1
 
 
+#TESTING
+"""
+def node_search_close(client, coor_index, dfstations):
+
+    client_coor = client.get_coordinates(coor_index)
+    listaux = list()
+    
+    for j in range (dfstations['ID_LTE'].count()):
+
+        Lat_s = dfstations['lat'].values[j]
+        Lon_s = dfstations['lon'].values[j]
+
+        loc2 = (Lat_s,Lon_s)
+
+        #function to calculate distance in (km)
+        distance = hs.haversine(client_coor,loc2)
+        listaux.append(distance)
+
+    index = listaux.index(min(listaux))
+
+    if( dfstations['ID_LTE'].values[index] == client.dfmigrations['ID_LTE'].values[0] ):
+        return -1
+
+    if (client.dfmigrations['ID_LTE'].count() == 2):
+        
+        client.dfmigrations = client.dfmigrations.drop([1], axis='index')
+        client.dfmigrations = client.dfmigrations.reset_index(drop=True)
+
+    client.dfmigrations = client.dfmigrations.append({
+                                                    'TripID': str(client.dftrip['TripID'].values[0]),
+                                                    'Latitude': float(dfstations['lat'].values[index]), 
+                                                    'Longitude': float(dfstations['lon'].values[index]), 
+                                                    'ID_LTE': int(dfstations['ID_LTE'].values[index]) 
+                                                    },ignore_index=True)
+
+    client.dfmigrations = client.dfmigrations.astype({
+                                                    'TripID': str,
+                                                    'Latitude': float, 
+                                                    'Longitude': float, 
+                                                    'ID_LTE': int 
+                                                    })
+
+    return 1
+"""
+
 def node_search_dist(client_coor, st_lat_lon, server_origin_coor):
 
     """The node_search_dist function checks if the distance to 
@@ -365,7 +410,7 @@ def node_search_lat(client, coor_index, st_lat_lon):
 
     latency_origin = client.latencies[0]
 
-    if(latency_target < latency_origin - 0.015):
+    if(latency_target < latency_origin - 0.015):    #latency_origin > latency_target + 0.015 
         return -1 
 
     return 1

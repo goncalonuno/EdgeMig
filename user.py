@@ -96,9 +96,9 @@ def handle_user_def (usr_def):
                     'df_LTE': 'Network_LTE.csv',                                                                                              
                     'dfvm': 'Vm_dataset_raw.csv',                                                                                             
                     'cone': 180,                                          # between 0 and 359                                                 
-                    'digest_path': './Digest/' + 'SingleVM/' + 'Test',    # Handle second and third string                                    
+                    'digest_path': './Digest/' + 'LoopVM/' + 'default',    # Handle second and third string                                    
                     'trip_min': 1,                                        # if (trip_min <=0): trip_min = 1                                   
-                    'trip_max': 1,                                        # if (trip_max < trip_min): trip_max = trip_min                     
+                    'trip_max': 3,                                        # if (trip_max < trip_min): trip_max = trip_min                     
                     'VM_mode': 0,                                         # 1-> Loop VM , 0 -> Single VM                                      
                     'vm_id' : 1463740276,                                 # VM id for Single VM mode                                          
                     'migtype': 'original',                                                                                                    

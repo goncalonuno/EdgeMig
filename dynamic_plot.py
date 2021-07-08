@@ -5,7 +5,12 @@ from matplotlib import animation
 import math
 import time
 import matplotlib as mpl 
+from matplotlib import rcParams
+
 mpl.rcParams['animation.ffmpeg_path'] = r'C:\\Program Files\\ffmpeg\\ffmpeg.exe'
+
+rcParams['axes.spines.top'] = False
+rcParams['axes.spines.right'] = False
 
 
 # First set up the figure, the axis, and the plot element we want to animate
@@ -48,7 +53,7 @@ def plot_process(dftrips,dfstations,lock):
         :rtype: Integer
     """ 
 
-    ani = FuncAnimation(fig, Animate, init_func=init, fargs=(dftrips,dfstations,lock,), frames=5000, save_count=5000, interval=1)
+    ani = FuncAnimation(fig, Animate, init_func=init, fargs=(dftrips,dfstations,lock,), frames=5000, save_count=5000, interval=1000)
                                                                                                                      #interval=1000
     #FFwriter = animation.FFMpegWriter(fps=30, bitrate=30000, extra_args=['-vcodec', 'libx264'])
     #ani.save('C:\\Users\\Gonçalo\\Desktop\\PlotDynamic\\basic_animation.mp4', writer=FFwriter)

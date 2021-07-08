@@ -42,7 +42,11 @@ The data created by the simulator is then treated by a python program that prese
 - Total number of migration performed            
 - Total data transfered by trip 
 
+Click in the GIF to the see full video on Youtube:
 
+<p align="center">
+	<a href="https://www.youtube.com/embed/EvU-FeJlyOg"><img src="https://i.imgflip.com/5b5oi3.gif" title="Youtube"/></a>
+</p>
 
 ## What's included
 
@@ -271,7 +275,7 @@ With all the results acquired it is possible to plot them by using the plotting 
 ## Project Documentation
 
 For a more detailed documentation about the project refer to the link provided in order to get some knowledge about each function and file of the project and their inputs, outputs and descriptions to better understand the functionalities of the project.
-**INSERT LINK HERE** 
+[Documentation for the Simulator](https://goncalonuno.github.io/EdgeMig/)
 
 ## How to contribute to this project?
 

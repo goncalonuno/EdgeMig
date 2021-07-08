@@ -226,7 +226,7 @@ def simulation(user_def, dfstations, dfnode, dfpath, clientlist, stationlist):
 
             lte_connection(client, 0)                               #find the first lte_st for that client
 
-            for coor_index in range(client.count_coordinates()):
+            for coor_index in range( 0, client.count_coordinates()):
                 
                 cone_determination(client, coor_index)
                 lte_connection(client, coor_index)
@@ -235,6 +235,7 @@ def simulation(user_def, dfstations, dfnode, dfpath, clientlist, stationlist):
 
                 if(client.mig_under == 0):
                     ret_node = node_search(client, coor_index, dfstations, user_def)      #-1 correspondes to not finding a posible destination
+                    #ret_node = node_search_close(client, coor_index, dfstations)
 
                 if(ret_node != -1):
                     client.latencies[1] = get_latency(client, coor_index, client.get_server_target_coor())
@@ -288,7 +289,10 @@ def simulation(user_def, dfstations, dfnode, dfpath, clientlist, stationlist):
                     elapsed = elapsed - 1
                     Mt_est = Mt_est - 1
                     Mt_real = Mt_real - 1
-
+        
+        #print(client.triptime)
+        #print(client.tripdistance)    
+                    
     if(user_def.dynamic_plot == 1):
         process.join()   
 

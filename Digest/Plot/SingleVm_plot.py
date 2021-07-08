@@ -6,6 +6,7 @@ import matplotlib.patches as mpatches
 from LoopVm_plot import *
 from natsort import index_natsorted, order_by_index
 
+#sn.set_context("paper", font_scale = 2)
 
 #single VM Only - (NO Comparisons)
 def latency_equilibrium(df, title):

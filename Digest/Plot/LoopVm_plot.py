@@ -3,7 +3,12 @@ import math
 import matplotlib.pyplot as plt
 import seaborn as sn
 import matplotlib.patches as mpatches
+from matplotlib import rcParams
+#from brokenaxes import brokenaxes 
 from natsort import index_natsorted, order_by_index
+
+#sn.set_context("paper", font_scale = 2)
+
 
 #AUX FUNC
 def Vm_groupby(df, group_by, aggr):
@@ -48,10 +53,12 @@ def n_mig_LoopVM(df):
     ax.set_title("Number of Migrations by Trip")
     sn.barplot(x='TripID', y='Number of Migrations', hue='Class', palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data=df, ax=ax)
 
+    ax.get_legend().remove()
+    ax.legend(loc='upper right')
+
+    ax.set_ylim(0, 25)
     ax.set_xlabel('Trips')
     ax.set_ylabel('Number of migrations')
-    ax.legend()
-
 
     return 1
 
@@ -80,10 +87,12 @@ def normalized_n_mig_LoopVM(df):
     ax.set_title("Number of Migrations / km  -  by Trip")
     sn.barplot(x='TripID', y='n_mig_km', hue='Class', palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data=df, ax=ax)
 
+    ax.get_legend().remove()
+    ax.legend(loc='upper right')
+
+    ax.set_ylim(0, 1.4)
     ax.set_xlabel('Trips')
     ax.set_ylabel('Number of migrations / KM')
-    ax.legend()
-
 
     return 1
 ####
@@ -144,10 +153,12 @@ def percentage_migtime_LoopVM(df):
 
     sn.boxplot(x='TripID', y='Percentage_migtime', hue="Class", palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data = df, ax=ax)
 
+    ax.get_legend().remove()
+    ax.legend(loc='upper right')
+    ax.set_ylim(0, 70)
+
     ax.set_xlabel('Trips')
     ax.set_ylabel('Percentage')
-
-    ax.legend()
 
     return 1
 ####
@@ -206,10 +217,12 @@ def percentage_downtime_LoopVM(df):
 
     sn.boxplot(x='TripID', y='Percentage_downtime', hue="Class", palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data = df, ax=ax)
 
+    ax.get_legend().remove()
+    ax.legend(loc='upper right')
+    ax.set_ylim(0, 2)
+
     ax.set_xlabel('Trips')
     ax.set_ylabel('Percentage')
-
-    ax.legend()
 
     return 1
 ####
@@ -235,17 +248,53 @@ def prep_client_latency_LoopVM(plot_dict, df_lst_files):
 
 def client_latency_LoopVM(df):
 
-    fig, ax = plt.subplots()
+    fig, (ax2, ax1) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios': [8, 1]})
+    fig.subplots_adjust(hspace=0.1)
 
-    ax.set_title("Client Latency to Origin by Trip")
+    ax2.set_title("Client Latency to Origin by Trip")
 
-    sn.boxplot(x='TripID', y='Latency', hue="Class", palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data = df, ax=ax)
+    sn.boxplot(x='TripID', y='Latency', hue="Class", palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data = df, ax=ax2)
+    sn.boxplot(x='TripID', y='Latency', hue="Class", palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data = df, ax=ax1)
 
-    ax.set_xlabel('Path coordinates')
-    ax.set_ylabel('Latency in milliseconds')
-    ax.legend()
+    #ax1.axhline(50, ls='--')
+    #ax1.text(-0.75,50.01, "Cloud one-way latency (Best Case)", fontsize=12)
 
-    return fig, ax
+    ax1.set_ylim(0, 0.002)  # below
+    ax2.set_ylim(26.564, 26.580)  # most of the data
+    ax1.set_yticks([0,0.002])
+
+    #26.567 26.580
+    # hide the spines between ax1 and ax2
+    sn.despine(ax=ax1)
+    sn.despine(ax=ax2, bottom=True)
+
+    ax = ax2
+    d = .01  # how big to make the diagonal lines in axes coordinates
+    # arguments to pass to plot, just so we don't keep repeating them
+    kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
+    ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
+
+    ax = ax1
+    kwargs.update(transform=ax.transAxes)  # switch to the bottom axes
+    ax.plot((-d, +d), (1 - d*8, 1 + d*8), **kwargs)  # bottom-left diagonal
+    
+    ax1.get_legend().remove()
+    ax2.get_legend().remove()
+    ax2.legend(loc='upper left')
+
+    #ax1.legend_.remove()
+    ax1.set_xlabel('')
+    ax1.set_ylabel('')
+    ax1.set_xlabel('Trips')
+
+    ax2.legend_.set_title(None)
+    #ax2.legend()
+    ax2.xaxis.set_ticks_position('none') 
+    ax2.set_xlabel('')
+    ax2.set_ylabel('')
+    ax2.set_ylabel('Latency in milliseconds')
+
+    return fig, ax1
 ####
 
 
@@ -275,9 +324,13 @@ def client_distance_LoopVM(df):
 
     sn.boxplot(x='TripID', y='Distance', hue="Class", palette=['C0', 'C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data = df, ax=ax)
 
+    ax.get_legend().remove()
+    ax.legend(loc='upper right')
+
+    ax.set_ylim(0, 6500)
+
     ax.set_xlabel('Path coordinates')
     ax.set_ylabel('Distance in meters')
-    ax.legend()
 
     return fig, ax
 ####
@@ -380,8 +433,11 @@ def normalized_transferred_data_LoopVM(df):
 
     sn.boxplot(x='TripID', y='gb_km', hue='Class', palette=['C0','C1','C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9'], data=df, ax=ax)
 
+    ax.get_legend().remove()
+    ax.legend(loc='upper right')
+    ax.set_ylim(0, 3.5)
+
     ax.set_xlabel('Trips')
     ax.set_ylabel('Data in GB/KM')
-    ax.legend()
 
     return 1

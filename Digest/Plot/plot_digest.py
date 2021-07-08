@@ -5,12 +5,15 @@ from SingleVm_plot import *
 import sys
 import os.path
 from natsort import index_natsorted, order_by_index
-
+from matplotlib import rcParams
+rcParams['font.sans-serif'] = ['Tahoma']
+rcParams['font.size'] = 30
+rcParams['axes.spines.top'] = False
+rcParams['axes.spines.right'] = False
 
 node_path = 'Node_Determination.xlsx' #Not used for now 
 stats_path = 'Statistics.xlsx'
 latency = 'Client_path.xlsx'
-
 
 
 def plot_loopVM(plot_dict):
@@ -24,39 +27,39 @@ def plot_loopVM(plot_dict):
     for path in plot_dict['Paths_Stats']:
         df_list_path.append(pd.read_excel(path + latency))
 
-
+    
     ## Number of migrations ##
     df = prep_n_mig_LoopVM(plot_dict, df_list_stats)
-    n_mig_LoopVM(df)
+    #n_mig_LoopVM(df)
     normalized_n_mig_LoopVM(df)
 
     ## Client Latency ## 
     df = prep_client_latency_LoopVM(plot_dict, df_list_path)
     client_latency_LoopVM(df)
-
+    
     ## Client Distance ## 
-    df = prep_client_distance_LoopVM(plot_dict, df_list_path)
-    client_distance_LoopVM(df)
-
+    #df = prep_client_distance_LoopVM(plot_dict, df_list_path)
+    #client_distance_LoopVM(df)
+    
     ## Migration Time Estimate vs Real Migration Time ##
-    df = prep_mte_vs_mtr_LoopVM(plot_dict, df_list_stats)
-    mte_vs_mtr_LoopVM(df)
+    #df = prep_mte_vs_mtr_LoopVM(plot_dict, df_list_stats)
+    #mte_vs_mtr_LoopVM(df)
 
     ## Migration Time ##
     df = prep_migtime_LoopVM(plot_dict, df_list_stats)
-    migtime_LoopVM(df)
+    #migtime_LoopVM(df)
     percentage_migtime_LoopVM(df)
 
     ## Downtime ##
     df = prep_downtime_LoopVM(plot_dict, df_list_stats)
-    downtime_LoopVM(df)
+    #downtime_LoopVM(df)
     percentage_downtime_LoopVM(df)
 
     ## Transferred Data ##
     df = prep_transferred_data_LoopVM(plot_dict, df_list_stats)
-    transferred_data_LoopVM(df)
+    #transferred_data_LoopVM(df)
     normalized_transferred_data_LoopVM(df)
-
+    
     return 1
     
 
@@ -159,12 +162,12 @@ def user_specs():
 
 if __name__ == "__main__":
 
-    plot_dict = user_specs()
+    #plot_dict = user_specs()
 
     #Example Compare Plot
-    #plot_dict = { 'Classes': ['Cone 180', 'Cone 60', 'Remove Cluster', 'Timeout'],
-    #              'Paths_Stats': ['../LoopVM/A/', '../LoopVM/B/', '../LoopVM/C/', '../LoopVM/D/']
-    #            }
+    plot_dict = { 'Classes': ['Cone 360 | EQ.', 'Cone 180 | EQ.', 'Cone 60 | EQ.', 'Cone 180 | RM. Cluster', 'Cone 180 | Timeout'],
+                  'Paths_Stats': ['../LoopVM/E_1/', '../LoopVM/A/', '../LoopVM/B/', '../LoopVM/C/', '../LoopVM/D/']
+                }
 
     #Cone_180 Cone_60 Remove_Cluster Timeout
     #../LoopVM/A/ ../LoopVM/B/ ../LoopVM/C/ ../LoopVM/D/
@@ -177,7 +180,6 @@ if __name__ == "__main__":
     plot_loopVM(plot_dict)
 
     #plot_SingleVM(plot_dict)
-
 
     plt.show()
 

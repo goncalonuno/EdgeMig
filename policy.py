@@ -37,7 +37,7 @@ def policy_evaluator(server, client, coor_index, user_def):
     #                           Improve Predict lat by adding AVG or ARIMA
     #                           Add bandwith to user as concern in qos
     
-
+    
     if(user_def.timeout == 1):
         if(client.timeout!= 0):
             client.timeout = client.timeout - 1
@@ -55,3 +55,5 @@ def policy_evaluator(server, client, coor_index, user_def):
 
     else:
         return False        #Don't Migrate
+
+    #return True
